@@ -1,8 +1,7 @@
+// PreferencesView.swift
+// Browserino
 //
-//  PreferencesView.swift
-//  Browserino
-//
-//  Created by Aleksandr Strizhnev on 06.06.2024.
+// Created by Aleksandr Strizhnev on 06.06.2024.
 //
 
 import AppKit
@@ -21,7 +20,7 @@ struct PreferencesView: View {
     @State private var selectedTab = 0
     
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             GeneralTab()
                 .tabItem {
                     Label("General", systemImage: "gear")
@@ -30,27 +29,33 @@ struct PreferencesView: View {
             
             BrowsersTab()
                 .tabItem {
-                    Label("Browsers", systemImage: "gear")
+                    Label("Browsers", systemImage: "globe")
                 }
                 .tag(1)
             
             AppsTab()
                 .tabItem {
-                    Label("Apps", systemImage: "gear")
+                    Label("Apps", systemImage: "app")
                 }
                 .tag(2)
             
             BrowserSearchLocationsTab()
                 .tabItem {
-                    Label("Locations", systemImage: "gear")
+                    Label("Locations", systemImage: "location")
                 }
-                .tag(2)
-
+                .tag(3)
+    
             AboutTab()
                 .tabItem {
-                    Label("About", systemImage: "gear")
+                    Label("About", systemImage: "info.circle")
                 }
-                .tag(2)
+                .tag(4)
+            
+            RulesTab()
+                .tabItem {
+                    Label("Rules", systemImage: "doc.text")
+                }
+                .tag(5)
         }
         .frame(minWidth: 700, minHeight: 500)
     }
